@@ -1,9 +1,9 @@
 # CG.Cryptography: 
 ---
-[![Build Status](https://dev.azure.com/codegator/CG.Cryptography/_apis/build/status/CodeGator.CG.Cryptography?branchName=main)](https://dev.azure.com/codegator/CG.Cryptography/_build/latest?definitionId=87&branchName=main)
+[![Build Status](https://dev.azure.com/codegator/CG.Cryptography/_apis/build/status/CodeGator.CG.Cryptography?branchName=main)](https://dev.azure.com/codegator/CG.Cryptography/_build/latest?definitionId=89&branchName=main)
 [![Github docs](https://img.shields.io/static/v1?label=Documentation&message=online&color=blue)](https://codegator.github.io/CG.Cryptography/index.html)
 [![NuGet downloads](https://img.shields.io/nuget/dt/CG.Cryptography.svg?style=flat)](https://nuget.org/packages/CG.Cryptography)
-![Azure DevOps coverage](https://img.shields.io/azure-devops/coverage/codegator/CG.Cryptography/87)
+![Azure DevOps coverage](https://img.shields.io/azure-devops/coverage/codegator/CG.Cryptography/89)
 [![Github discussion](https://img.shields.io/badge/Discussion-online-blue)](https://github.com/CodeGator/CG.Cryptography/discussions)
 [![CG.Cryptography on fuget.org](https://www.fuget.org/packages/CG.Cryptography/badge.svg)](https://www.fuget.org/packages/CG.Cryptography)
 
