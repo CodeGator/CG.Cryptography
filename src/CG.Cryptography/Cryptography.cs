@@ -67,11 +67,13 @@ internal class Cryptography : ICryptography
     /// <inheritdoc/>
     public virtual ValueTask<(byte[], byte[])> GenerateKeyAndIVAsync(
         string password,
+        string salt,
         CancellationToken cancellationToken = default
         )
     {
         // Validate the parameter(s) before attempting to use them.
-        Guard.Instance().ThrowIfNullOrEmpty(password, nameof(password));
+        Guard.Instance().ThrowIfNullOrEmpty(password, nameof(password))
+            .ThrowIfNullOrEmpty(salt, nameof(salt));
 
         try
         {
@@ -104,12 +106,12 @@ internal class Cryptography : ICryptography
 
             // Log what we are about to do.
             _logger.LogDebug(
-                "Creating a random IV value"
+                "Converting the salt to bytes"
                 );
 
-            // Create a random salt value.
-            var saltBytes = RandomNumberGenerator.GetBytes(
-                32
+            // Convert the salt to bytes.
+            var saltBytes = Encoding.UTF8.GetBytes(
+                salt
                 );
 
             // Log what we are about to do.
@@ -117,9 +119,7 @@ internal class Cryptography : ICryptography
                 "Deriving the RFC2898 based cryptographic key"
                 );
 
-            // Derive the ACTUAL cryptographic key and IV values using
-            //   the RFC2898 algorithm, to ensure nothing is easily
-            //   predictable.
+            // Derive the key and IV.
             var derivedkey = new Rfc2898DeriveBytes(
                 passwordBytes,
                 saltBytes,

@@ -73,7 +73,6 @@ public static partial class CryptographyExtensions
                 // Copy the Key and IV.
                 alg.Key = key;
                 alg.IV = iv;
-                alg.Padding = PaddingMode.PKCS7;
 
                 // Log what we are about to do.
                 cryptography.Logger.LogDebug(
@@ -224,7 +223,6 @@ public static partial class CryptographyExtensions
                 // Copy the Key and IV.
                 alg.Key = key;
                 alg.IV = iv;
-                alg.Padding = PaddingMode.PKCS7;
 
                 // Create a place to hold the encrypted bytes.
                 byte[] encrypted = Array.Empty<byte>();
@@ -351,7 +349,6 @@ public static partial class CryptographyExtensions
                 // Set the block and key sizes.
                 alg.KeySize = 256;
                 alg.BlockSize = 128;
-                alg.Padding = PaddingMode.PKCS7;
 
                 // Log what we are about to do.
                 cryptography.Logger.LogDebug(
@@ -504,7 +501,6 @@ public static partial class CryptographyExtensions
                 // Copy the Key and IV.
                 alg.Key = key;
                 alg.IV = iv;
-                alg.Padding = PaddingMode.PKCS7;
 
                 // Create a place to put the decrypted bytes.
                 byte[] decrypted = Array.Empty<byte>();

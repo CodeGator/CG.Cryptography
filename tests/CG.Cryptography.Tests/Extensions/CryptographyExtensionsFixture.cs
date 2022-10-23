@@ -44,7 +44,10 @@ namespace CG.Cryptography.Extensions
             // Create a Key and IV.
             var logger = new Mock<ILogger<ICryptography>>();
             var crypto = new Cryptography(logger.Object);
-            var tuple = crypto.GenerateKeyAndIVAsync("password").Result;
+            var tuple = crypto.GenerateKeyAndIVAsync(
+                "password",
+                "salt"
+                ).Result;
 
             // Save the results.
             _key = tuple.Item1;
@@ -70,7 +73,7 @@ namespace CG.Cryptography.Extensions
                 logger.Object
                 ) as ICryptography;
 
-            var rawValue = "this is a test";
+            var rawValue = "codegator";
 
             // Act ...
             var result = await crypto.AesEncryptAsync(

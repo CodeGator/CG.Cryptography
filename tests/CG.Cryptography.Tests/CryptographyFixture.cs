@@ -27,17 +27,18 @@ namespace CG.Cryptography
             var crypto = new Cryptography(logger.Object);
 
             // Act ...
-            var result = await crypto.GenerateKeyAndIVAsync(
-                "password"
+            var result1 = await crypto.GenerateKeyAndIVAsync(
+                "password",
+                "salt"
                 ).ConfigureAwait(false);
 
             // Assert ...
             Assert.IsTrue(
-                result.Item1.Length == 32,
+                result1.Item1.Length == 32,
                 "The Key is the wrong length!"
                 );
             Assert.IsTrue(
-                result.Item2.Length == 16,
+                result1.Item2.Length == 16,
                 "The IV is the wrong length!"
                 );
         }
