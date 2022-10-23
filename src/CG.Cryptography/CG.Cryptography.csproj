@@ -10,8 +10,8 @@ Platforms supported:
       .NET 6.x or above</Description>
     <Copyright>Copyright © 2008 - 2022 by CodeGator. All rights reserved.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/CodeGator/CG.Core</PackageProjectUrl>
-    <PackageTags>core, CG.Cryptography, CodeGator</PackageTags>
+    <PackageProjectUrl>https://github.com/CodeGator/CG.Cryptography</PackageProjectUrl>
+    <PackageTags>cryptography, CG.Cryptography, CodeGator</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageIcon>packageDefaultIcon-50x50.png</PackageIcon>
