@@ -14,7 +14,7 @@ public static partial class WebApplicationBuilderExtensions
     #region Public methods
 
     /// <summary>
-    /// This method adds the types required to support the <see cref="ICryptography"/>
+    /// This method adds the types required to support the <see cref="ICryptographer"/>
     /// type and any extensions to that type.
     /// </summary>
     /// <param name="webApplicationBuilder">The web application builder to
@@ -33,8 +33,8 @@ public static partial class WebApplicationBuilderExtensions
         // Validate the parameters before attempting to use them.
         Guard.Instance().ThrowIfNull(webApplicationBuilder, nameof(webApplicationBuilder));
 
-        // Register the manager.
-        webApplicationBuilder.Services.Add<ICryptography, Cryptography>(serviceLifetime);
+        // Register the object.
+        webApplicationBuilder.Services.Add<ICryptographer, Cryptographer>(serviceLifetime);
 
         // Return the builder.
         return webApplicationBuilder;

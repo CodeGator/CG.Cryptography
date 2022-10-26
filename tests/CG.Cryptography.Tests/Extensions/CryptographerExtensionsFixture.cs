@@ -5,11 +5,11 @@ using System.Text;
 namespace CG.Cryptography.Extensions
 {
     /// <summary>
-    /// This class is a test fixture for the <see cref="CryptographyExtensions"/> class.
+    /// This class is a test fixture for the <see cref="CryptographerExtensions"/> class.
     /// </summary>
     [TestClass]
     [TestCategory("Unit")]
-    public class CryptographyExtensionsFixture
+    public class CryptographerExtensionsFixture
     {
         // *******************************************************************
         // Fields.
@@ -42,8 +42,8 @@ namespace CG.Cryptography.Extensions
         public void Initialize()
         {
             // Create a Key and IV.
-            var logger = new Mock<ILogger<ICryptography>>();
-            var crypto = new Cryptography(logger.Object);
+            var logger = new Mock<ILogger<ICryptographer>>();
+            var crypto = new Cryptographer(logger.Object);
             var tuple = crypto.GenerateKeyAndIVAsync(
                 "password",
                 "salt"
@@ -59,7 +59,7 @@ namespace CG.Cryptography.Extensions
         #region Encrypt
 
         /// <summary>
-        /// This method is a unit test that verifies the <see cref="CryptographyExtensions.AesEncryptAsync(ICryptography, byte[], byte[], string, System.Threading.CancellationToken)"/> 
+        /// This method is a unit test that verifies the <see cref="CryptographerExtensions.AesEncryptAsync(ICryptographer, byte[], byte[], string, System.Threading.CancellationToken)"/> 
         /// method. Here we verify that the method encrypts a string using our
         /// test credentials.
         /// </summary>
@@ -67,11 +67,11 @@ namespace CG.Cryptography.Extensions
         public async Task CryptographyExtensions_AesEncryptString()
         {
             // Arrange ...
-            var logger = new Mock<ILogger<ICryptography>>();
+            var logger = new Mock<ILogger<ICryptographer>>();
 
-            var crypto = new Cryptography(
+            var crypto = new Cryptographer(
                 logger.Object
-                ) as ICryptography;
+                ) as ICryptographer;
 
             var rawValue = "codegator";
 
@@ -100,7 +100,7 @@ namespace CG.Cryptography.Extensions
         // *******************************************************************
 
         /// <summary>
-        /// This method is a unit test that verifies the <see cref="CryptographyExtensions.AesEncryptAsync(ICryptography, byte[], byte[], byte[], System.Threading.CancellationToken)"/> 
+        /// This method is a unit test that verifies the <see cref="CryptographerExtensions.AesEncryptAsync(ICryptographer, byte[], byte[], byte[], System.Threading.CancellationToken)"/> 
         /// method. Here we verify that the method encrypts bytes using our
         /// test credentials.
         /// </summary>
@@ -108,11 +108,11 @@ namespace CG.Cryptography.Extensions
         public async Task CryptographyExtensions_AesEncryptBytes()
         {
             // Arrange ...
-            var logger = new Mock<ILogger<ICryptography>>();
+            var logger = new Mock<ILogger<ICryptographer>>();
 
-            var crypto = new Cryptography(
+            var crypto = new Cryptographer(
                 logger.Object
-                ) as ICryptography;
+                ) as ICryptographer;
 
             var rawValue = new byte[] { 0, 1, 2, 3 };
 
@@ -141,20 +141,20 @@ namespace CG.Cryptography.Extensions
         #region Decrypt
 
         /// <summary>
-        /// This method is a unit test that verifies the <see cref="CryptographyExtensions.AesDecryptAsync(ICryptography, byte[], byte[], byte[], System.Threading.CancellationToken)"/> 
+        /// This method is a unit test that verifies the <see cref="CryptographerExtensions.AesDecryptAsync(ICryptographer, byte[], byte[], byte[], System.Threading.CancellationToken)"/> 
         /// method. Here we verify that the method decrypts bytes that were 
-        /// encrypted using our test credentials and the <see cref="CryptographyExtensions.AesEncryptAsync(ICryptography, byte[], byte[], byte[], System.Threading.CancellationToken)"/>
+        /// encrypted using our test credentials and the <see cref="CryptographerExtensions.AesEncryptAsync(ICryptographer, byte[], byte[], byte[], System.Threading.CancellationToken)"/>
         /// method.
         /// </summary>
         [TestMethod]
         public async Task CryptographyExtensions_AesDecryptBytes()
         {
             // Arrange ...
-            var logger = new Mock<ILogger<ICryptography>>();
+            var logger = new Mock<ILogger<ICryptographer>>();
 
-            var crypto = new Cryptography(
+            var crypto = new Cryptographer(
                 logger.Object
-                ) as ICryptography;
+                ) as ICryptographer;
 
             var rawValue = new byte[] { 0, 1, 2, 3 };
 
@@ -192,20 +192,20 @@ namespace CG.Cryptography.Extensions
         // *******************************************************************
 
         /// <summary>
-        /// This method is a unit test that verifies the <see cref="CryptographyExtensions.AesDecryptAsync(ICryptography, byte[], byte[], string, System.Threading.CancellationToken)"/> 
+        /// This method is a unit test that verifies the <see cref="CryptographerExtensions.AesDecryptAsync(ICryptographer, byte[], byte[], string, System.Threading.CancellationToken)"/> 
         /// method. Here we verify that the method decrypts a string that was 
-        /// encrypted using our test credentials and the <see cref="CryptographyExtensions.AesEncryptAsync(ICryptography, byte[], byte[], string, System.Threading.CancellationToken)"/>
+        /// encrypted using our test credentials and the <see cref="CryptographerExtensions.AesEncryptAsync(ICryptographer, byte[], byte[], string, System.Threading.CancellationToken)"/>
         /// method.
         /// </summary>
         [TestMethod]
         public async Task CryptographyExtensions_AesDecryptString()
         {
             // Arrange ...
-            var logger = new Mock<ILogger<ICryptography>>();
+            var logger = new Mock<ILogger<ICryptographer>>();
 
-            var crypto = new Cryptography(
+            var crypto = new Cryptographer(
                 logger.Object
-                ) as ICryptography;
+                ) as ICryptographer;
 
             var rawValue = "codegator";
 

@@ -2,7 +2,7 @@
 namespace CG.Cryptography
 {
     /// <summary>
-    /// This class is a test fixture for the <see cref="Cryptography"/> class.
+    /// This class is a test fixture for the <see cref="CryptographerBase"/> class.
     /// </summary>
     [TestClass]
     [TestCategory("Unit")]
@@ -15,7 +15,7 @@ namespace CG.Cryptography
         #region Public methods
 
         /// <summary>
-        /// This method is a unit test that verifies the <see cref="Cryptography.GenerateKeyAndIVAsync(string, System.Threading.CancellationToken)"/> 
+        /// This method is a unit test that verifies the <see cref="CryptographerBase.GenerateKeyAndIVAsync(string, System.Threading.CancellationToken)"/> 
         /// method. Here we verify that the method generates a valid Key and IV
         /// using the given test password.
         /// </summary>
@@ -23,8 +23,8 @@ namespace CG.Cryptography
         public async Task Cryptography_GenerateKeyAndIV()
         {
             // Arrange ...
-            var logger = new Mock<ILogger<ICryptography>>();
-            var crypto = new Cryptography(logger.Object);
+            var logger = new Mock<ILogger<ICryptographer>>();
+            var crypto = new Cryptographer(logger.Object);
 
             // Act ...
             var result1 = await crypto.GenerateKeyAndIVAsync(

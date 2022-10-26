@@ -2,10 +2,10 @@
 namespace CG.Cryptography;
 
 /// <summary>
-/// This class contains extension methods related to the <see cref="ICryptography"/>
+/// This class contains extension methods related to the <see cref="ICryptographer"/>
 /// type.
 /// </summary>
-public static partial class CryptographyExtensions
+public static partial class CryptographerExtensions
 {
     // *******************************************************************
     // Public methods.
@@ -30,7 +30,7 @@ public static partial class CryptographyExtensions
     /// <exception cref="CryptographicException">This exception is thrown 
     /// whenever the operation fails to complete properly.</exception>
     public static async ValueTask<string> AesEncryptAsync(
-        this ICryptography cryptography,
+        this ICryptographer cryptography,
         byte[] key,
         byte[] iv,
         string value,
@@ -181,7 +181,7 @@ public static partial class CryptographyExtensions
     /// <exception cref="CryptographicException">This exception is thrown 
     /// whenever the operation fails to complete properly.</exception>
     public static async ValueTask<byte[]> AesEncryptAsync(
-        this ICryptography cryptography,
+        this ICryptographer cryptography,
         byte[] key,
         byte[] iv,
         byte[] value,
@@ -315,7 +315,7 @@ public static partial class CryptographyExtensions
     /// <exception cref="CryptographicException">This exception is thrown 
     /// whenever the operation fails to complete properly.</exception>
     public static ValueTask<string> AesDecryptAsync(
-        this ICryptography cryptography,
+        this ICryptographer cryptography,
         byte[] key,
         byte[] iv,
         string value,
@@ -458,7 +458,7 @@ public static partial class CryptographyExtensions
     /// <exception cref="CryptographicException">This exception is thrown 
     /// whenever the operation fails to complete properly.</exception>
     public static async ValueTask<byte[]> AesDecryptAsync(
-        this ICryptography cryptography,
+        this ICryptographer cryptography,
         byte[] key,
         byte[] iv,
         byte[] value,

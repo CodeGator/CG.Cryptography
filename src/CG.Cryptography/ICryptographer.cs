@@ -4,12 +4,12 @@ namespace CG.Cryptography;
 /// <summary>
 /// This interface represents an object that performs cryptographic operations.
 /// </summary>
-public interface ICryptography
+public interface ICryptographer
 {
     /// <summary>
     /// This property contains a logger for cryptographic operations.
     /// </summary>
-    ILogger<ICryptography> Logger { get; }
+    ILogger<ICryptographer> Logger { get; }
 
     /// <summary>
     /// This method generates a Key and IV from the given password and salt.

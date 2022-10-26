@@ -2,10 +2,10 @@
 namespace CG.Cryptography;
 
 /// <summary>
-/// This class is a default implementation of the <see cref="ICryptography"/>
+/// This class is a base implementation of the <see cref="ICryptographer"/>
 /// interface.
 /// </summary>
-public class Cryptography : ICryptography
+public abstract class CryptographerBase : ICryptographer
 {
     // *******************************************************************
     // Fields.
@@ -16,7 +16,7 @@ public class Cryptography : ICryptography
     /// <summary>
     /// This field contains the logger for the class.
     /// </summary>
-    internal protected readonly ILogger<ICryptography> _logger;
+    internal protected readonly ILogger<ICryptographer> _logger;
     
     #endregion
 
@@ -27,7 +27,7 @@ public class Cryptography : ICryptography
     #region Properties
 
     /// <inheritdoc/>
-    public virtual ILogger<ICryptography> Logger => _logger;
+    public virtual ILogger<ICryptographer> Logger => _logger;
 
     #endregion
 
@@ -38,14 +38,14 @@ public class Cryptography : ICryptography
     #region Constructors
 
     /// <summary>
-    /// This constructor creates a new instance of the <see cref="Cryptography"/>
+    /// This constructor creates a new instance of the <see cref="CryptographerBase"/>
     /// class.
     /// </summary>
     /// <param name="logger">The logger to use with this class.</param>
     /// <exception cref="ArgumentException">This exception is thrown whenever
     /// one or more parameters are missing, or invalid.</exception>
-    public Cryptography(
-        ILogger<ICryptography> logger
+    protected CryptographerBase(
+        ILogger<ICryptographer> logger
         )
     {
         // Validate the parameters before attempting to use them.
@@ -118,7 +118,7 @@ public class Cryptography : ICryptography
                 "Deriving the RFC2898 based cryptographic key"
                 );
 
-            // Derive the key and IV.
+            // Derive the Key and IV.
             var derivedkey = new Rfc2898DeriveBytes(
                 passwordBytes,
                 saltBytes,
@@ -127,7 +127,7 @@ public class Cryptography : ICryptography
 
             // Log what we are about to do.
             _logger.LogDebug(
-                "Packaging the tuple with key and block values"
+                "Packaging the tuple with Key and IV"
                 );
 
             // Return the results.
