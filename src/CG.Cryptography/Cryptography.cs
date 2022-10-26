@@ -1,12 +1,11 @@
 ﻿
-
 namespace CG.Cryptography;
 
 /// <summary>
 /// This class is a default implementation of the <see cref="ICryptography"/>
 /// interface.
 /// </summary>
-internal class Cryptography : ICryptography
+public class Cryptography : ICryptography
 {
     // *******************************************************************
     // Fields.
@@ -18,7 +17,7 @@ internal class Cryptography : ICryptography
     /// This field contains the logger for the class.
     /// </summary>
     internal protected readonly ILogger<ICryptography> _logger;
-
+    
     #endregion
 
     // *******************************************************************
