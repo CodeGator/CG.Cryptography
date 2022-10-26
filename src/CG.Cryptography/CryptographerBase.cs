@@ -64,7 +64,7 @@ public abstract class CryptographerBase : ICryptographer
     #region Public methods
 
     /// <inheritdoc/>
-    public virtual ValueTask<(byte[], byte[])> GenerateKeyAndIVAsync(
+    public virtual ValueTask<Tuple<byte[], byte[]>> GenerateKeyAndIVAsync(
         string password,
         string salt,
         CancellationToken cancellationToken = default
@@ -131,7 +131,7 @@ public abstract class CryptographerBase : ICryptographer
                 );
 
             // Return the results.
-            var tuple = (
+            var tuple = new Tuple<byte[], byte[]>(
                 derivedkey.GetBytes(alg.KeySize / 8),
                 derivedkey.GetBytes(alg.BlockSize / 8)
                 );

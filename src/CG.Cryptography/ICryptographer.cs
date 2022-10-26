@@ -19,7 +19,7 @@ public interface ICryptographer
     /// <param name="cancellationToken">A cancellation token.</param>
     /// <returns>A task to perform the operation that returns a cryptographic
     /// key and IV value, in a tuple, as: (key, IV).</returns>
-    ValueTask<(byte[], byte[])> GenerateKeyAndIVAsync(
+    ValueTask<Tuple<byte[], byte[]>> GenerateKeyAndIVAsync(
         string password,
         string salt,
         CancellationToken cancellationToken = default
