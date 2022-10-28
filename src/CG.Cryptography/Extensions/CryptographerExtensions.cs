@@ -33,7 +33,7 @@ public static partial class CryptographerExtensions
         this ICryptographer cryptography,
         byte[] key,
         byte[] iv,
-        string value,
+        string? value,
         CancellationToken cancellationToken = default
         )
     {
@@ -42,11 +42,16 @@ public static partial class CryptographerExtensions
             .ThrowIfNull(key, nameof(key))
             .ThrowIfNull(iv, nameof(iv))
             .ThrowIfFalse(key.LongLength == 32, nameof(key))
-            .ThrowIfFalse(iv.LongLength == 16, nameof(iv))
-            .ThrowIfNullOrEmpty(value, nameof(value));
+            .ThrowIfFalse(iv.LongLength == 16, nameof(iv));
 
         try
         {
+            // Can we take a shortcut?
+            if (string.IsNullOrEmpty(value))
+            {
+                return string.Empty;
+            }
+
             // Log what we are about to do.
             cryptography.Logger.LogDebug(
                 "Generating an AES algorithm instance"
@@ -184,7 +189,7 @@ public static partial class CryptographerExtensions
         this ICryptographer cryptography,
         byte[] key,
         byte[] iv,
-        byte[] value,
+        byte[]? value,
         CancellationToken cancellationToken = default
         )
     {
@@ -193,11 +198,16 @@ public static partial class CryptographerExtensions
             .ThrowIfNull(key, nameof(key))
             .ThrowIfNull(iv, nameof(iv))
             .ThrowIfFalse(key.LongLength == 32, nameof(key))
-            .ThrowIfFalse(iv.LongLength == 16, nameof(iv))
-            .ThrowIfNull(value, nameof(value));
+            .ThrowIfFalse(iv.LongLength == 16, nameof(iv));
 
         try
         {
+            // Can we take a shortcut?
+            if (value is null || value.Length == 0)
+            {
+                return Array.Empty<byte>();
+            }
+
             // Log what we are about to do.
             cryptography.Logger.LogDebug(
                 "Generating an AES algorithm instance"
@@ -318,7 +328,7 @@ public static partial class CryptographerExtensions
         this ICryptographer cryptography,
         byte[] key,
         byte[] iv,
-        string value,
+        string? value,
         CancellationToken cancellationToken = default
         )
     {
@@ -327,11 +337,16 @@ public static partial class CryptographerExtensions
             .ThrowIfNull(key, nameof(key))
             .ThrowIfNull(iv, nameof(iv))
             .ThrowIfFalse(key.LongLength == 32, nameof(key))
-            .ThrowIfFalse(iv.LongLength == 16, nameof(iv))
-            .ThrowIfNullOrEmpty(value, nameof(value));
+            .ThrowIfFalse(iv.LongLength == 16, nameof(iv));
 
         try
         {
+            // Can we take a shortcut?
+            if (string.IsNullOrEmpty(value))
+            {
+                return ValueTask.FromResult(string.Empty);
+            }
+
             // Log what we are about to do.
             cryptography.Logger.LogDebug(
                 "Generating an AES algorithm instance"
@@ -461,7 +476,7 @@ public static partial class CryptographerExtensions
         this ICryptographer cryptography,
         byte[] key,
         byte[] iv,
-        byte[] value,
+        byte[]? value,
         CancellationToken cancellationToken = default
         )
     {
@@ -470,11 +485,16 @@ public static partial class CryptographerExtensions
             .ThrowIfNull(key, nameof(key))
             .ThrowIfNull(iv, nameof(iv))
             .ThrowIfFalse(key.LongLength == 32, nameof(key))
-            .ThrowIfFalse(iv.LongLength == 16, nameof(iv))
-            .ThrowIfNull(value, nameof(value));
+            .ThrowIfFalse(iv.LongLength == 16, nameof(iv));
 
         try
         {
+            // Can we take a shortcut?
+            if (value is null || value.Length == 0)
+            {
+                return Array.Empty<byte>();
+            }
+
             // Log what we are about to do.
             cryptography.Logger.LogDebug(
                 "Generating an AES algorithm instance"

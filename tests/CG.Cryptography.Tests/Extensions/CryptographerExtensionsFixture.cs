@@ -20,12 +20,12 @@ namespace CG.Cryptography.Extensions
         /// <summary>
         /// This field contains the test Key for the fixture.
         /// </summary>
-        private byte[] _key;
+        private byte[] _key = null!;
 
         /// <summary>
         /// This field contains the test IV for the fixture.
         /// </summary>
-        private byte[] _iv;
+        private byte[] _iv = null!;
 
         #endregion
 
