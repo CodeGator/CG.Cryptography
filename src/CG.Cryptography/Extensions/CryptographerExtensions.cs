@@ -16,6 +16,134 @@ public static partial class CryptographerExtensions
     #region Encryption
 
     /// <summary>
+    /// This method encrypts the given stream using AES.
+    /// </summary>
+    /// <param name="cryptography">The cryptography instance to use for 
+    /// the operation.</param>
+    /// <param name="key">The key to use for the operation.</param>
+    /// <param name="iv">The IV to use for the operation.</param>
+    /// <param name="value">The value to use for the operation.</param>
+    /// <param name="cancellationToken">A cancellation token.</param>
+    /// <returns>A task to perform the operation that returns an encrypted string.</returns>
+    /// <exception cref="ArgumentException">This exception is thrown whenever
+    /// one or more arguments are missing, or invalid.</exception>
+    /// <exception cref="CryptographicException">This exception is thrown 
+    /// whenever the operation fails to complete properly.</exception>
+    public static async ValueTask<Stream> AesEncryptAsync(
+        this ICryptographer cryptography,
+        byte[] key,
+        byte[] iv,
+        Stream value,
+        CancellationToken cancellationToken = default
+        )
+    {
+        // Validate the parameter(s) before attempting to use them.
+        Guard.Instance().ThrowIfNull(cryptography, nameof(cryptography))
+            .ThrowIfNull(key, nameof(key))
+            .ThrowIfNull(iv, nameof(iv))
+            .ThrowIfFalse(key.LongLength == 32, nameof(key))
+            .ThrowIfFalse(iv.LongLength == 16, nameof(iv))
+            .ThrowIfNull(value, nameof(value));
+
+        try
+        {
+            // Can we take a shortcut?
+            if (value is null || value.Length == 0)
+            {
+                return new MemoryStream();
+            }
+
+            // Log what we are about to do.
+            cryptography.Logger.LogDebug(
+                "Generating an AES algorithm instance"
+                );
+
+            // Create the algorithm
+            using (var alg = Aes.Create())
+            {
+                // Log what we are about to do.
+                cryptography.Logger.LogDebug(
+                    "Setting the key and block sizes"
+                    );
+
+                // Set the block and key sizes.
+                alg.KeySize = 256;
+                alg.BlockSize = 128;
+
+                // Log what we are about to do.
+                cryptography.Logger.LogDebug(
+                    "Setting the key and IV values"
+                    );
+
+                // Copy the Key and IV.
+                alg.Key = key;
+                alg.IV = iv;
+
+                // Log what we are about to do.
+                cryptography.Logger.LogDebug(
+                    "Creating an AES encryptor"
+                    );
+
+                // Create the encryptor.
+                using (var enc = alg.CreateEncryptor())
+                {
+                    // Create a cryptographic stream.
+                    using (var cryptoStream = new CryptoStream(
+                        value,
+                        enc,
+                        CryptoStreamMode.Read
+                        ))
+                    {
+                        // Log what we are about to do.
+                        cryptography.Logger.LogDebug(
+                            "Creating a destination stream"
+                            );
+
+                        // Create the destination stream.
+                        var destStream = new MemoryStream();
+
+                        // Log what we are about to do.
+                        cryptography.Logger.LogDebug(
+                            "Copying bytes from the cryptography stream"
+                            );
+
+                        // Copy the bits.
+                        await cryptoStream.CopyToAsync(
+                            destStream
+                            ).ConfigureAwait(false);
+
+                        // Log what we are about to do.
+                        cryptography.Logger.LogDebug(
+                            "Repositioning the destination stream"
+                            );
+
+                        // Move back to the beginning.
+                        destStream.Seek(0, SeekOrigin.Begin); 
+
+                        // Return the results.
+                        return destStream;
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            // Log what happened.
+            cryptography.Logger.LogError(
+                "Failed to encrypt a stream with AES!"
+                );
+
+            // Provider better context.
+            throw new CryptographyException(
+                message: $"Failed to encrypt a stream with AES!",
+                innerException: ex
+                );
+        }
+    }
+
+    // *******************************************************************
+
+    /// <summary>
     /// This method encrypts the given string using AES.
     /// </summary>
     /// <param name="cryptography">The cryptography instance to use for 
@@ -309,6 +437,148 @@ public static partial class CryptographerExtensions
     #endregion
 
     #region Decryption
+
+    /// <summary>
+    /// This method decrypts the given stream using AES.
+    /// </summary>
+    /// <param name="cryptography">The cryptography instance to use for the
+    /// operation.</param>
+    /// <param name="key">The key to use for the operation.</param>
+    /// <param name="iv">The IV to use for the operation.</param>
+    /// <param name="value">The value to use for the operation.</param>
+    /// <param name="cancellationToken">A cancellation token.</param>
+    /// <returns>A task to perform the operation that returns a decrypted string.</returns>
+    /// <exception cref="ArgumentException">This exception is thrown whenever
+    /// one or more arguments are missing, or invalid.</exception>
+    /// <exception cref="CryptographicException">This exception is thrown 
+    /// whenever the operation fails to complete properly.</exception>
+    public static async ValueTask<Stream> AesDecryptAsync(
+        this ICryptographer cryptography,
+        byte[] key,
+        byte[] iv,
+        Stream value,
+        CancellationToken cancellationToken = default
+        )
+    {
+        // Validate the parameter(s) before attempting to use them.
+        Guard.Instance().ThrowIfNull(cryptography, nameof(cryptography))
+            .ThrowIfNull(key, nameof(key))
+            .ThrowIfNull(iv, nameof(iv))
+            .ThrowIfFalse(key.LongLength == 32, nameof(key))
+            .ThrowIfFalse(iv.LongLength == 16, nameof(iv))
+            .ThrowIfNull(value, nameof(value));
+
+        try
+        {
+            // Can we take a shortcut?
+            if (value is null || value.Length == 0)
+            {
+                return new MemoryStream();
+            }
+
+            // Log what we are about to do.
+            cryptography.Logger.LogDebug(
+                "Generating an AES algorithm instance"
+                );
+
+            // Create the algorithm
+            using (var alg = Aes.Create())
+            {
+                // Log what we are about to do.
+                cryptography.Logger.LogDebug(
+                    "Setting the key and block sizes"
+                    );
+
+                // Set the block and key sizes.
+                alg.KeySize = 256;
+                alg.BlockSize = 128;
+
+                // Log what we are about to do.
+                cryptography.Logger.LogDebug(
+                    "Setting the Key and IV values"
+                    );
+
+                // Copy the key and IV.
+                alg.Key = key;
+                alg.IV = iv;
+
+                // Log what we are about to do.
+                cryptography.Logger.LogDebug(
+                    "Creating an AES decryptor"
+                    );
+
+                // Create the decryptor.
+                using (var dec = alg.CreateDecryptor())
+                {
+                    // Log what we are about to do.
+                    cryptography.Logger.LogDebug(
+                        "Creating a destination stream"
+                        );
+
+                    // Create a destination stream.
+                    var destStream = new MemoryStream();
+
+                    // Log what we are about to do.
+                    cryptography.Logger.LogDebug(
+                        "Creating a cryptography stream"
+                        );
+
+                    // Create a cryptography stream.
+                    using (var cryptoStream = new CryptoStream(
+                        destStream,
+                        dec,
+                        CryptoStreamMode.Write,
+                        true
+                        ))
+                    {
+                        // Log what we are about to do.
+                        cryptography.Logger.LogDebug(
+                            "Copying bytes to the cryptography stream"
+                            );
+
+                        // Copy the bits.
+                        await value.CopyToAsync(
+                            cryptoStream
+                            ).ConfigureAwait(false);
+
+                        // Log what we are about to do.
+                        cryptography.Logger.LogDebug(
+                            "Flushing the final block in the cryptography stream"
+                            );
+
+                        // Flush it baby!!
+                        cryptoStream.FlushFinalBlock();
+                    }
+
+                    // Log what we are about to do.
+                    cryptography.Logger.LogDebug(
+                        "Repositioning the destination stream"
+                        );
+
+                    // Move back to the beginning.
+                    destStream.Seek(0, SeekOrigin.Begin);
+                    
+                    // Return the results.
+                    return destStream;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            // Log what happened.
+            cryptography.Logger.LogError(
+                "Failed to decrypt a stream with AES!"
+                );
+
+            // Provider better context.
+            throw new CryptographyException(
+                message: $"Failed to decrypt a stream with AES!",
+                innerException: ex
+                );
+        }
+    }
+
+    // *******************************************************************
 
     /// <summary>
     /// This method decrypts the given string using AES.
