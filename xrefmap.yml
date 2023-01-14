@@ -67,6 +67,15 @@ references:
   commentId: T:CG.Cryptography.CryptographerExtensions
   fullName: CG.Cryptography.CryptographerExtensions
   nameWithType: CryptographerExtensions
+- uid: CG.Cryptography.CryptographerExtensions.AesDecryptAsync(CG.Cryptography.ICryptographer,System.Byte[],System.Byte[],Stream,CancellationToken)
+  name: AesDecryptAsync(ICryptographer, Byte[], Byte[], Stream, CancellationToken)
+  href: api/CG.Cryptography.CryptographerExtensions.html#CG_Cryptography_CryptographerExtensions_AesDecryptAsync_CG_Cryptography_ICryptographer_System_Byte___System_Byte___Stream_CancellationToken_
+  commentId: M:CG.Cryptography.CryptographerExtensions.AesDecryptAsync(CG.Cryptography.ICryptographer,System.Byte[],System.Byte[],Stream,CancellationToken)
+  name.vb: AesDecryptAsync(ICryptographer, Byte(), Byte(), Stream, CancellationToken)
+  fullName: CG.Cryptography.CryptographerExtensions.AesDecryptAsync(CG.Cryptography.ICryptographer, System.Byte[], System.Byte[], Stream, CancellationToken)
+  fullName.vb: CG.Cryptography.CryptographerExtensions.AesDecryptAsync(CG.Cryptography.ICryptographer, System.Byte(), System.Byte(), Stream, CancellationToken)
+  nameWithType: CryptographerExtensions.AesDecryptAsync(ICryptographer, Byte[], Byte[], Stream, CancellationToken)
+  nameWithType.vb: CryptographerExtensions.AesDecryptAsync(ICryptographer, Byte(), Byte(), Stream, CancellationToken)
 - uid: CG.Cryptography.CryptographerExtensions.AesDecryptAsync(CG.Cryptography.ICryptographer,System.Byte[],System.Byte[],System.Byte[],CancellationToken)
   name: AesDecryptAsync(ICryptographer, Byte[], Byte[], Byte[], CancellationToken)
   href: api/CG.Cryptography.CryptographerExtensions.html#CG_Cryptography_CryptographerExtensions_AesDecryptAsync_CG_Cryptography_ICryptographer_System_Byte___System_Byte___System_Byte___CancellationToken_
@@ -92,6 +101,15 @@ references:
   isSpec: "True"
   fullName: CG.Cryptography.CryptographerExtensions.AesDecryptAsync
   nameWithType: CryptographerExtensions.AesDecryptAsync
+- uid: CG.Cryptography.CryptographerExtensions.AesEncryptAsync(CG.Cryptography.ICryptographer,System.Byte[],System.Byte[],Stream,CancellationToken)
+  name: AesEncryptAsync(ICryptographer, Byte[], Byte[], Stream, CancellationToken)
+  href: api/CG.Cryptography.CryptographerExtensions.html#CG_Cryptography_CryptographerExtensions_AesEncryptAsync_CG_Cryptography_ICryptographer_System_Byte___System_Byte___Stream_CancellationToken_
+  commentId: M:CG.Cryptography.CryptographerExtensions.AesEncryptAsync(CG.Cryptography.ICryptographer,System.Byte[],System.Byte[],Stream,CancellationToken)
+  name.vb: AesEncryptAsync(ICryptographer, Byte(), Byte(), Stream, CancellationToken)
+  fullName: CG.Cryptography.CryptographerExtensions.AesEncryptAsync(CG.Cryptography.ICryptographer, System.Byte[], System.Byte[], Stream, CancellationToken)
+  fullName.vb: CG.Cryptography.CryptographerExtensions.AesEncryptAsync(CG.Cryptography.ICryptographer, System.Byte(), System.Byte(), Stream, CancellationToken)
+  nameWithType: CryptographerExtensions.AesEncryptAsync(ICryptographer, Byte[], Byte[], Stream, CancellationToken)
+  nameWithType.vb: CryptographerExtensions.AesEncryptAsync(ICryptographer, Byte(), Byte(), Stream, CancellationToken)
 - uid: CG.Cryptography.CryptographerExtensions.AesEncryptAsync(CG.Cryptography.ICryptographer,System.Byte[],System.Byte[],System.Byte[],CancellationToken)
   name: AesEncryptAsync(ICryptographer, Byte[], Byte[], Byte[], CancellationToken)
   href: api/CG.Cryptography.CryptographerExtensions.html#CG_Cryptography_CryptographerExtensions_AesEncryptAsync_CG_Cryptography_ICryptographer_System_Byte___System_Byte___System_Byte___CancellationToken_
@@ -192,6 +210,25 @@ references:
   commentId: N:Microsoft.Extensions.DependencyInjection
   fullName: Microsoft.Extensions.DependencyInjection
   nameWithType: Microsoft.Extensions.DependencyInjection
+- uid: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions
+  name: ServiceCollectionExtensions
+  href: api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html
+  commentId: T:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions
+  fullName: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions
+  nameWithType: ServiceCollectionExtensions
+- uid: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddCryptography(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  name: AddCryptography(IServiceCollection, ServiceLifetime)
+  href: api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html#Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddCryptography_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_DependencyInjection_ServiceLifetime_
+  commentId: M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddCryptography(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  fullName: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddCryptography(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  nameWithType: ServiceCollectionExtensions.AddCryptography(IServiceCollection, ServiceLifetime)
+- uid: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddCryptography*
+  name: AddCryptography
+  href: api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html#Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddCryptography_
+  commentId: Overload:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddCryptography
+  isSpec: "True"
+  fullName: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddCryptography
+  nameWithType: ServiceCollectionExtensions.AddCryptography
 - uid: Microsoft.Extensions.DependencyInjection.WebApplicationBuilderExtensions
   name: WebApplicationBuilderExtensions
   href: api/Microsoft.Extensions.DependencyInjection.WebApplicationBuilderExtensions.html

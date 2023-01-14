@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Cryptography.CryptographerBase.html",
-          "hash": "j4o1+bVguOCJnEyBEmgzML6535lQ/Q3XqY3ZZQ04QbI="
+          "hash": "49qMD3g/INDK7eNZERmlLVMCpI9xi0gwk7EgblFvVrI="
         }
       },
       "is_incremental": false,
@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Cryptography.CryptographerExtensions.html",
-          "hash": "BlZLZCDLX18gediPcNc8x0623WxbL3LiAVmduc5ZkwU="
+          "hash": "sufDR1rmim25Hlo6YD5U3hyV9y3VGdry8YujlSiUgAA="
         }
       },
       "is_incremental": false,
@@ -54,7 +54,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Cryptography.ICryptographer.html",
-          "hash": "kkv6N3u7xo7cuJLS9jOk9IdzHenD1kmBFFDFlEbfna0="
+          "hash": "rprtE/Pb1+XZ7/gcaxvltjEUMAW856Yt79aAzoOaj84="
         }
       },
       "is_incremental": false,
@@ -67,6 +67,18 @@
         ".html": {
           "relative_path": "api/CG.Cryptography.html",
           "hash": "06e9V1SiK6PN9NyEAKnuhMsmXMtYplfCjRviy1Kb9Ys="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html",
+          "hash": "NMTSZiOKO+KFSlYs4KkYiwHlVi6ykTjoRM45x9E6Qu4="
         }
       },
       "is_incremental": false,
@@ -90,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.html",
-          "hash": "n9nGoNlLhD+Uk1lejCogUvugZrf8tQY1LYVs7q5y2KM="
+          "hash": "wqwZthY2Hh+QBu/Dj1guFQj+HJRsVG/veypdOgJr0hk="
         }
       },
       "is_incremental": false,
@@ -114,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "XELwb9pyZtENic3WMkg6Mmo5/X3WwJXX8aXo58RyxGg="
+          "hash": "mvO6gXTVi+8PhC+tW2oF95k9AumLlx8o73vaJf6XG8Q="
         }
       },
       "is_incremental": false,
@@ -233,7 +245,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 7,
+          "total_file_count": 8,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
